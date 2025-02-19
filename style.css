@@ -1,4 +1,39 @@
-h1 {
-    background-color: red;
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.top-bar h1 {
+    background-color: #17252a;
     color: white;
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+}
+
+
+.functionalitys {
+    display: flex;
+    flex: 1; 
+}
+
+
+.features {
+    background-color: #2B7a76;
+    width: 10%; 
+}
+
+
+.lists {
+    background-color: #3aafa9;
+    flex: 1; 
+}
+
+.footer {
+    background-color: #def2f1;
+    padding: 10px;
+    text-align: center;
 }
