@@ -15,7 +15,7 @@ html, body {
 }
 
 
-.functionalitys {
+.main-body {
     display: flex;
     flex: 1; 
 }
@@ -54,19 +54,13 @@ html, body {
     margin: 10px;
 }
 
-.add-box button {
+.lists button {
     width:80%;
     margin: 10%;
 }
 
 .box li {
     background-color: white;
-
     margin: 10px;
-}
-
-.box button {
-    width:80%;
-    margin: 10%;
 }
 
