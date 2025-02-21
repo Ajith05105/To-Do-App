@@ -1,21 +1,30 @@
 const addBoxButton = document.getElementById('add-box');
 const boxContainer = document.getElementById('task-boxs');
-const addTaskButton = document.getElementById('add-task');
-const taskList = document.getElementById('task-list');
+const addTask = document.getElementById('task-boxs');
 
-addTaskButton.addEventListener('click', () => {
-
-  taskList.innerHTML += `<li>Task 4</li>`;
+boxContainer.addEventListener('click', (event) => {
+  if (event.target.classList.contains('add-task')) {
+    const taskList = event.target.previousElementSibling; 
+    const newTask = document.createElement('li');
+    newTask.textContent = `Task ${taskList.children.length + 1}`;
+    taskList.appendChild(newTask);
+  }
 });
 
-addBoxButton.addEventListener('click', () => {
 
-  boxContainer.innerHTML += ` <div class = "box">Tasks: 
-              <span id = "task-list">
-            <li>Task 1</li>
-            <li>Task 2</li>
-            <li>Task 3</li>
-            </span>
-            <button id = "add-task">+ Add Task</button>
-        </div>`;
-}); 
+addBoxButton.addEventListener('click', () => {
+  const newBox = document.createElement('div'); 
+  newBox.classList.add('box'); 
+
+  newBox.innerHTML = `
+    <p>Tasks:</p>
+    <ul class="task-list"> 
+      <li>Task 1</li>
+      <li>Task 2</li>
+      <li>Task 3</li>
+    </ul>
+    <button class="add-task">+ Add Task</button>
+  `;
+
+  boxContainer.appendChild(newBox);
+});
