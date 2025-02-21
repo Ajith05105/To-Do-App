@@ -9,6 +9,7 @@ html, body {
 }
 
 
+
 .top-bar h1 {
     background-color: #17252a;
     color: white;
@@ -61,9 +62,10 @@ html, body {
     margin: 10px;
 }
 
-.lists button {
-    width:80%;
-    margin: 10%;
+.lists button,
+.lists input {
+    width: 55%;
+    margin: 3%;
 }
 
 .box li {
@@ -74,3 +76,5 @@ html, body {
 #task-boxs  {
     display: flex;
 }
+
+
