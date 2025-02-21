@@ -15,26 +15,25 @@ addBoxButton.addEventListener('click', () => {
 
   boxContainer.appendChild(newBox);
 
-  // Add event listener to the new button
+  
   newBox.querySelector('#create-task-box').addEventListener('click', (event) => {
-    event.preventDefault(); // Prevent form submission
-    createTask();
+    event.preventDefault();
+    createTask(event.target.closest('.box'));
   });
 });
 
-const createTask = () => {
+const createTask = (box) => {
   const taskBoxName = document.getElementById("task-box-name").value.trim();
   
-  // Check if the input is empty
+ 
   if (!taskBoxName) {
     alert("Please enter a Task-Box name!");
     return;
   }
 
-  const newBox = document.createElement('div'); 
-  newBox.classList.add('box'); 
+ 
 
-  newBox.innerHTML = `
+  box.innerHTML = `
     <p>${taskBoxName}:</p>
     <ul class="task-list"> 
       <li>Task 1</li>
@@ -44,5 +43,4 @@ const createTask = () => {
     <button class="add-task">+ Add Task</button>
   `;
 
-  boxContainer.appendChild(newBox);
 };
