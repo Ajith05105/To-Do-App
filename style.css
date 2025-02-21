@@ -5,6 +5,7 @@ html, body {
     flex-direction: column;
      flex: 1; 
     display: flex;
+    overflow-x: hidden;
 }
 
 
@@ -33,6 +34,9 @@ html, body {
     background-color: #3aafa9;
     flex: 1; 
     display: flex;
+    overflow-x: auto; 
+    
+
 }
 
 .footer {
@@ -47,6 +51,7 @@ html, body {
     width: 200px;
     height: 200px; 
     margin: 10px;
+    overflow-y: auto;
 }
 
 .add-box-bg{
@@ -68,5 +73,4 @@ html, body {
 
 #task-boxs  {
     display: flex;
-   
 }
