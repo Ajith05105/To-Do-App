@@ -1,5 +1,6 @@
 const addBoxButton = document.getElementById('add-box');
 const boxContainer = document.getElementById('task-boxs');
+let taskNumber = 0;
 
 
 
@@ -44,8 +45,30 @@ const createTaskBox = (box) => {
 
   box.querySelector('.add-task').addEventListener('click', (event) => {
     event.preventDefault();
+    taskNumber++;
+    alert("Task added to " + taskBoxName);
     createTask(event.target.closest('.box'));
   });
+
+};
+
+//creating a task
+const createTask = (box) => {
+  const taskName = document.getElementById("task-name").value.trim();
+  
+  if (!taskName) {
+    alert("Please enter a Task name!");
+    return;
+  } 
+
+  const task = document.createElement('div');
+  task.classList.add('task');
+  task.innerHTML = `
+    <p>${taskNumber} . ${taskName}</p>
+    
+  `;
+
+  box.appendChild(task);
 
 };
 
