@@ -1,74 +1,85 @@
-const addBoxButton = document.getElementById('add-box');
-const boxContainer = document.getElementById('task-boxs');
+const addBoxButton = document.getElementById('add-box-btn');  // Get the add box button
+const addBoxContainer = document.getElementById('add-box');   // Container where form will be created
+const boxContainer = document.getElementById('task-boxs');    // Container where task boxes will be appended
+
 let taskNumber = 0;
 
+// Open form inside the add-box container
+addBoxButton.addEventListener('click', () => {
+  // Check if form already exists to prevent duplicates
+  if (document.getElementById("task-box-form")) return;
 
+  const form = document.createElement('form');
+  form.id = "task-box-form";
 
-addBoxButton.addEventListener('click', () => { //This is what happens when you wanna add the list
-  const newBox = document.createElement('div'); 
-  newBox.classList.add('box'); 
-
-  // gets the name of the list and creates a list with the name
-  newBox.innerHTML = `
-    <form id="task-box-form">
-      <input type="text" placeholder="Task-Box Name" id="task-box-name" />   
+  form.innerHTML = `
+      <input type="text" placeholder="Enter Task-Box Name..." id="task-box-name" />   
       <button type="submit" id="create-task-box">Add Task-Box</button>
+  `;
+
+  addBoxContainer.appendChild(form);
+  const addBoxButtonParent = addBoxButton.parentNode;
+  addBoxButton.remove();  // R
+
+  // Handle form submission
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    createTaskBox();
+    addBoxContainer.appendChild(addBoxButton);
+  });
+});
+
+// Creating a task box
+const createTaskBox = () => {
+  const taskBoxName = document.getElementById("task-box-name").value.trim();
+
+  if (!taskBoxName) {
+    alert("Please enter a Task-Box name!");
+    return;
+  }
+
+  const newBox = document.createElement('div');
+  newBox.classList.add('box');
+  
+
+
+  newBox.innerHTML = `
+    <p>${taskBoxName}:</p>
+    <form>
+      <input type="text" placeholder="Task Name" class="task-name" />
+      <button type="button" class="add-task">+ Add Task</button>
     </form>
+    <div class="task-list"></div>
   `;
 
   boxContainer.appendChild(newBox);
 
-  //had to prevent the default action of the form so that the page doesn't refresh so the create task box fucntion is reached 
-  newBox.querySelector('#create-task-box').addEventListener('click', (event) => {
-    event.preventDefault();
-    createTaskBox(event.target.closest('.box'));
-  });
-});
-
-//creating a task box
-const createTaskBox = (box) => {
-  const taskBoxName = document.getElementById("task-box-name").value.trim();
-  
- 
-  if (!taskBoxName) {
-    alert("Please enter a Task-Box name!");
-    return;
-  } 
-//This is what happens after the task box is created
-  box.innerHTML = `
-    <p>${taskBoxName}:</p>
-    <form>
-    <input type="text" placeholder="Task Name" id="task-name" />
-    <button class="add-task">+ Add Task</button>
-    </form>
-  `;
-
-  box.querySelector('.add-task').addEventListener('click', (event) => {
+  // Event listener for adding tasks to the new task box
+  newBox.querySelector('.add-task').addEventListener('click', (event) => {
     event.preventDefault();
     taskNumber++;
-    alert("Task added to " + taskBoxName);
-    createTask(event.target.closest('.box'));
+    createTask(newBox);
   });
 
+  // Remove the form after adding the task box
+  const formContainer = document.getElementById("task-box-form");
+  formContainer.remove();
 };
 
-//creating a task
+// Creating a task
 const createTask = (box) => {
-  const taskName = document.getElementById("task-name").value.trim();
-  
+  const taskInput = box.querySelector(".task-name");
+  const taskName = taskInput.value.trim();
+
   if (!taskName) {
     alert("Please enter a Task name!");
     return;
-  } 
+  }
 
   const task = document.createElement('div');
   task.classList.add('task');
-  task.innerHTML = `
-    <p>${taskNumber} . ${taskName}</p>
-    
-  `;
+  task.innerHTML = `<p>${taskNumber}. ${taskName}</p>`;
 
-  box.appendChild(task);
-
+  box.querySelector('.task-list').appendChild(task);
+  taskInput.value = ""; 
 };
-

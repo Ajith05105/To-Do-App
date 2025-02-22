@@ -55,17 +55,32 @@ html, body {
     overflow-y: auto;
 }
 
-.add-box-bg{
+.add-box-bg {
     background-color: #def2f1;
     width: 200px;
     height: 50px;
     margin: 10px;
+    position: relative;
+    overflow: hidden;
 }
 
-.lists button,
-.lists input {
-    width: 55%;
-    margin: 3%;
+
+
+
+
+#task-box-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: 100%;
+    overflow: hidden;
 }
 
 .box li {
