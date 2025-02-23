@@ -5,7 +5,7 @@ const boxContainer = document.getElementById('task-boxs');    // Container where
 
 // Open form inside the add-box container
 addBoxButton.addEventListener('click', () => {
-  
+
   // Check if form already exists to prevent duplicates
   if (document.getElementById("task-box-form")) return;
 
@@ -14,7 +14,10 @@ addBoxButton.addEventListener('click', () => {
   form.id = "task-box-form";
   form.innerHTML = `
       <input type="text" placeholder="Enter Task-Box Name..." id="task-box-name" />   
-      <button type="submit" id="create-task-box">Add Task-Box</button>
+      <div>
+      <button type="submit" id ="create-task-box">Add Task-Box</button>
+      <button type = "button" id ="cancel-add-box">Cancel</button>
+      </div>
   `;
 
   addBoxContainer.appendChild(form);
@@ -27,6 +30,14 @@ addBoxButton.addEventListener('click', () => {
     event.preventDefault(); // Prevent the default form submission of refreshing the page
     createTaskBox(); // Create a task box with the title inputted
   });
+
+  // Handle cancel button
+   document.getElementById('cancel-add-box').addEventListener('click', (event) => {
+    event.preventDefault();
+    addBoxButton.style.display = 'block'; // Show the add box button again
+    form.remove(); // Remove the form
+  });
+
 });
 
 
@@ -52,7 +63,7 @@ const createTaskBox = () => {
       <button type="button" class="add-task">+ Add Task</button>
     </form>
   `;
- // adding it to the task box container
+  // adding it to the task box container
   boxContainer.appendChild(newBox);
 
   // Event listener for adding tasks to the new task box
@@ -88,5 +99,5 @@ const createTask = (box) => {
 
   // Append the task to the task list and clear the input field
   box.querySelector('.task-list').appendChild(task);
-  taskInput.value = ""; 
+  taskInput.value = "";
 };

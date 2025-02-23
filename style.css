@@ -102,6 +102,10 @@
     background-color: var(--light-blue);
 }
 
+#task-box-form div {
+     display: flex; 
+}
+
 
 #task-boxs  {
     /*To display the task list in a row*/
