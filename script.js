@@ -56,7 +56,7 @@ const createTaskBox = () => {
   const newBox = document.createElement('div');
   newBox.classList.add('box');
   newBox.innerHTML = `
-    <p>${taskBoxName}:</p>
+    <div id = "title"><p>${taskBoxName}:</p><button id = "delete-title">X</button></div>
     <div class="task-list"></div>
     <form class="task-form">
       <input type="text" placeholder="Task Name" class="task-name" />
@@ -77,6 +77,12 @@ const createTaskBox = () => {
     event.preventDefault();
     createTask(newBox);
   });
+
+    // Event listener for deleting a box
+    newBox.querySelector('#delete-title').addEventListener('click', (event) => {
+      event.preventDefault();
+      newBox.remove();
+    });
 
   // Remove the form after adding the task box
   const formContainer = document.getElementById("task-box-form");
