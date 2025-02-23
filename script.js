@@ -51,7 +51,6 @@ const createTaskBox = () => {
       <input type="text" placeholder="Task Name" class="task-name" />
       <button type="button" class="add-task">+ Add Task</button>
     </form>
-    
   `;
  // adding it to the task box container
   boxContainer.appendChild(newBox);
