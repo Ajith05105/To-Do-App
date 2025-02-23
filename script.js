@@ -1,5 +1,5 @@
 const addBoxButton = document.getElementById('add-box-btn');  // Get the add box button
-const addBoxContainer = document.getElementById('add-box');   // Container where form will be created
+const addBoxContainer = document.getElementById('add-box-bg-layout');   // Container where form will be created
 const boxContainer = document.getElementById('task-boxs');    // Container where task boxes will be appended
 
 
@@ -16,6 +16,7 @@ addBoxButton.addEventListener('click', () => {
       <input type="text" placeholder="Enter Task-Box Name..." id="task-box-name" />   
       <button type="submit" id="create-task-box">Add Task-Box</button>
   `;
+
   addBoxContainer.appendChild(form);
 
   //temporarily hide the add box button
@@ -25,7 +26,6 @@ addBoxButton.addEventListener('click', () => {
   form.addEventListener('submit', (event) => {
     event.preventDefault(); // Prevent the default form submission of refreshing the page
     createTaskBox(); // Create a task box with the title inputted
-    addBoxButton.style.display = 'block'; // Show the add box button again
   });
 });
 
@@ -65,6 +65,8 @@ const createTaskBox = () => {
   // Remove the form after adding the task box
   const formContainer = document.getElementById("task-box-form");
   formContainer.remove();
+
+  addBoxButton.style.display = 'block'; // Show the add box button again
 };
 
 

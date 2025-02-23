@@ -1,53 +1,51 @@
-html, body {
+/*Global styles – Things that apply to the whole website (e.g., font styles, colors, resets).*/
+
+:root {
+    --black-blue: #17252a;
+    --grey-blue: #2B7a76;
+    --cyan: #3aafa9;
+    --light-blue: #def2f1;
+  }
+
+  html, body {
     height: 100%;
     margin: 0;
+    /*Stretchs the the body to fit the whole screen*/
     display: flex;
     flex-direction: column;
-     flex: 1; 
-    display: flex;
-    overflow-x: hidden;
 }
 
 
-.top-bar h1 {
-    background-color: #17252a;
-    color: white;
-    text-align: center;
-    margin: 0;
-    padding: 10px;
-}
-
+/*Layout styles – Things that structure the page (e.g., containers, grids, flexbox).*/
 
 .main-body {
+    /*To put the featues and task list container side by side*/
     display: flex;
     flex: 1; 
 }
 
-
 .features {
-    background-color: #2B7a76;
+    background-color: var(--grey-blue);
     width: 10%; 
 }
 
-
 .lists {
-    background-color: #3aafa9;
+    background-color: var(--cyan);
+    /*Fill the rest of the screen horizontally*/
     flex: 1; 
     display: flex;
+    /*Enable Scroll bar when task list overflows*/
     overflow-x: auto; 
-    
-
 }
 
 .footer {
-    background-color: #def2f1;
+    background-color:  var(--light-blue);
     padding: 10px;
     text-align: center;
 }
 
-
 .box {
-    background-color: #def2f1;
+    background-color: var(--light-blue);
     width: 200px;
     height: 200px; 
     margin: 10px;
@@ -55,7 +53,7 @@ html, body {
 }
 
 .add-box-bg{
-    background-color: #def2f1;
+    background-color: var(--light-blue);
     width: 200px;
     height: 50px;
     margin: 10px;
@@ -64,17 +62,25 @@ html, body {
 }
 
 
-#add-box{
+/*Components – Smaller elements like buttons, cards, or forms.*/
+
+.top-bar h1 {
+    background-color: var(--black-blue);
+    color: white;
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+}
+
+#add-box-bg-layout{
     /* Center the add box button */
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
 }
 
-.lists button {
-    margin: center;
-}
 
+/*Utility classes – Small helper classes like .hidden, .text-center, .margin-10.*/
 
 .box li {
     background-color: white;
@@ -82,5 +88,6 @@ html, body {
 }
 
 #task-boxs  {
+    /*To display the task list in a row*/
     display: flex;
 }
