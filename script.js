@@ -71,7 +71,7 @@ const createTaskBox = () => {
   newBox.querySelector('.task-form').addEventListener('submit', (event) => {
     event.preventDefault();
   });
-  
+
   // Event listener for adding tasks to the new task box
   newBox.querySelector('.add-task').addEventListener('click', (event) => {
     event.preventDefault();
@@ -101,7 +101,12 @@ const createTask = (box) => {
   // Create a task element and append it to the task list
   const task = document.createElement('div');
   task.classList.add('task');
-  task.innerHTML = `<li>${taskName}</li>`;
+  task.innerHTML = `<div id = "task"><li>${taskName}</li><button id = "delete-task" >X</button></div>`;
+
+  // Event listener for deleting a task
+  task.querySelector('#delete-task').addEventListener('click', () => {
+    task.remove();
+  });
 
   // Append the task to the task list and clear the input field
   box.querySelector('.task-list').appendChild(task);
