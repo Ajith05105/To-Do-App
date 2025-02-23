@@ -50,6 +50,10 @@
     height: 200px; 
     margin: 10px;
     overflow-y: auto;
+    /*Ensures text does not overflow creating a scroll bar horozontally*/
+    word-break: normal; 
+    overflow-wrap: anywhere; 
+    white-space: normal; 
 }
 
 .add-box-bg{

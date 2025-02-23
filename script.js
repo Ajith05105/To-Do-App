@@ -58,7 +58,7 @@ const createTaskBox = () => {
   newBox.innerHTML = `
     <p>${taskBoxName}:</p>
     <div class="task-list"></div>
-    <form>
+    <form class="task-form">
       <input type="text" placeholder="Task Name" class="task-name" />
       <button type="button" class="add-task">+ Add Task</button>
     </form>
@@ -66,6 +66,12 @@ const createTaskBox = () => {
   // adding it to the task box container
   boxContainer.appendChild(newBox);
 
+
+  // Prevent form submission inside the task box form
+  newBox.querySelector('.task-form').addEventListener('submit', (event) => {
+    event.preventDefault();
+  });
+  
   // Event listener for adding tasks to the new task box
   newBox.querySelector('.add-task').addEventListener('click', (event) => {
     event.preventDefault();
