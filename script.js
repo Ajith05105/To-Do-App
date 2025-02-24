@@ -117,10 +117,27 @@ const createTask = (box) => {
   task.querySelector('#delete-task').addEventListener('click', () => {
     task.remove();});
 
+  // replace selected task with an input field
   task.querySelector('#edit-task').addEventListener('click', () => {
-    taskName = prompt("Edit Task", taskName);
-    task.querySelector('li').textContent = taskName;
-  });
+  const taskText = task.querySelector('li').textContent;
+  task.innerHTML = `
+    <input type="text" value="${taskText}" class="task-name" />
+    <button id="update-task">save</button>
+    <button id = "delete-title">X</button>
+  `;
+  task.querySelector('#update-task').addEventListener('click', () => {
+    const newTaskName = task.querySelector('.task-name').value.trim();
+    if (!newTaskName) {
+      alert("Please enter a Task name!");
+      return;
+    }
+    task.innerHTML =  task.innerHTML = `<div id = "task" '>
+                                        <li>${newTaskName}</li>
+                                        <button id = "edit-task"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        <button id = "delete-task" >X</button>                 
+                                        </div>`;
+  
+  })});
 
   // Append the task to the task list and clear the input field
   box.querySelector('.task-list').appendChild(task);
