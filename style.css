@@ -50,6 +50,11 @@
     height: 200px; 
     margin: 10px;
     overflow-y: auto;
+    overflow-x: hidden;
+    /*Ensures text does not overflow creating a scroll bar horozontally*/
+    word-break: normal; 
+    overflow-wrap: anywhere; 
+    white-space: normal; 
 }
 
 .add-box-bg{
@@ -87,6 +92,19 @@
         justify-content: center;
 }
 
+#task, #title{
+    /*To display the task and delete button in a row*/
+    display: flex;
+    align-items: center; /* Aligns text and button vertically */
+    justify-content: space-between; /* Pushes text left, button right */
+    width: 100%; /* Ensures it takes full width */
+}
+
+#task{
+    background-color: var(--light-blue);
+    border: 1px solid black;
+}
+
 
 /*Utility classes – Small helper classes like .hidden, .text-center, .margin-10.*/
 
@@ -94,11 +112,7 @@
     margin: 10px;
 }
 
-.add-box-bg button, .box button {
-    background-color: var(--light-blue);
-}
-
-.add-box-bg input, .box input {
+.add-box-bg button, .box button, .add-box-bg input, .box input {
     background-color: var(--light-blue);
 }
 
@@ -106,12 +120,13 @@
      display: flex; 
 }
 
+#task button, #title button{
+    width:25px;
+    height: 25px;
+}
+
 
 #task-boxs  {
     /*To display the task list in a row*/
     display: flex;
 }
-
-
-
-
