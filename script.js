@@ -106,12 +106,20 @@ const createTask = (box) => {
 
   // Create a task element and append it to the task list
   const task = document.createElement('div');
-  task.classList.add('task');
-  task.innerHTML = `<div id = "task"><li>${taskName}</li><button id = "delete-task" >X</button></div>`;
+  task.classList.add('task-elements');
+  task.innerHTML = `<div id = "task" '>
+                    <li>${taskName}</li>
+                    <button id = "edit-task"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button id = "delete-task" >X</button>                 
+                    </div>`;
 
   // Event listener for deleting a task
   task.querySelector('#delete-task').addEventListener('click', () => {
-    task.remove();
+    task.remove();});
+
+  task.querySelector('#edit-task').addEventListener('click', () => {
+    taskName = prompt("Edit Task", taskName);
+    task.querySelector('li').textContent = taskName;
   });
 
   // Append the task to the task list and clear the input field
