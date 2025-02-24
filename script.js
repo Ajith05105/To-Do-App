@@ -119,6 +119,10 @@ const createTask = (box) => {
 
   // replace selected task with an input field
   task.querySelector('#edit-task').addEventListener('click', () => {
+   editTask(task);
+  });
+
+  const editTask = () => {
   const taskText = task.querySelector('li').textContent;
   task.innerHTML = `
     <input type="text" value="${taskText}" class="task-name" />
@@ -136,8 +140,13 @@ const createTask = (box) => {
                                         <button id = "edit-task"><i class="fa-solid fa-pen-to-square"></i></button>
                                         <button id = "delete-task" >X</button>                 
                                         </div>`;
+    task.querySelector('#delete-task').addEventListener('click', () => {
+      task.remove();});
+    task.querySelector('#edit-task').addEventListener('click', () => {
+      editTask(task);
+    });
   
-  })});
+  })};
 
   // Append the task to the task list and clear the input field
   box.querySelector('.task-list').appendChild(task);
