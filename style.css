@@ -50,6 +50,7 @@
     height: 200px; 
     margin: 10px;
     overflow-y: auto;
+    overflow-x: hidden;
     /*Ensures text does not overflow creating a scroll bar horozontally*/
     word-break: normal; 
     overflow-wrap: anywhere; 
@@ -129,7 +130,3 @@
     /*To display the task list in a row*/
     display: flex;
 }
-
-
-
-
